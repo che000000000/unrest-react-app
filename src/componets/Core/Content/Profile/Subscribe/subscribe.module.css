@@ -1,0 +1,12 @@
+.container {
+    height: 36px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #13B94C;
+    border-radius: 5px;
+}
+
+.container:active {
+    background-color: #11a745;
+}
