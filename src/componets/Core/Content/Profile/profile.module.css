@@ -6,14 +6,14 @@
 .leftside {
     display: flex;
     flex-direction: column;
-    width: 240px;
+    width: 220px;
     gap: 15px;
 }
 
 .rightside {
     display: flex;
     flex-direction: column;
-    width: 487px;
+    width: 507px;
     gap: 15px;
 }
 
@@ -28,4 +28,8 @@
 
 .block1 {
     gap: 15px;
+}
+
+.block4 {
+    padding: 0;
 }

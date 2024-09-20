@@ -2,7 +2,7 @@
 
 *{
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 body {
@@ -11,6 +11,12 @@ body {
     box-sizing: border-box;
     margin: 0;
     background-color: #000;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
 }
 
 a {
@@ -47,5 +53,5 @@ button {
 
 .content {
     width: 782px;
-    padding: 20px;
+    padding: 20px 35px 20px 10px;
 }

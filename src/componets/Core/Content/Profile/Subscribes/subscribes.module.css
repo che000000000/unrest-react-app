@@ -1,0 +1,16 @@
+.title {
+    display: flex;
+    gap: 3px;
+    font-size: 19px;
+}
+
+.subscribes_count {
+    font-size: 13px;
+}
+
+.users_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 15px;
+}

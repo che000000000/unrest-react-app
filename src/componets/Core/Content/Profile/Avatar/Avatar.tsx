@@ -3,7 +3,7 @@ import noImage from '../../../../../img/no-avatar.png'
 
 const Avatar = () => {
     return (
-        <img className={avatar.container} src={noImage} />
+        <img className={avatar.container} src={noImage} alt='user avatar' />
     )
 }
 
