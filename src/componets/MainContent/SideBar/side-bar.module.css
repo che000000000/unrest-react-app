@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 172px;
+    padding-top: 35px;
+}
+
+.routes_list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 35px;
+}
+
+.split_line {
+    width: 112px;
+    height: 1px;
+    background-color: #373737;
+}

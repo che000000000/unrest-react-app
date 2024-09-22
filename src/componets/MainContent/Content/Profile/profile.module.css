@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    gap: 15px;
+}
+
+.leftside {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    gap: 15px;
+}
+
+.rightside {
+    display: flex;
+    flex-direction: column;
+    width: 507px;
+    gap: 15px;
+}
+
+.block {    
+    display: flex;
+    flex-direction: column;
+    background-color: #111111;
+    border: 1px solid #373737;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.block1 {
+    gap: 15px;
+}
+
+.block4 {
+    padding: 0;
+}

@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px
+}
+
+.user_name {
+    font-size: 19px;
+    color: #fff;
+}
+
+.about_user {
+    color: #fff;
+}
+
+.more_info {
+    display: inline-block;
+    text-decoration: underline;
+    color: #13B94C;
+    cursor: pointer;
+}

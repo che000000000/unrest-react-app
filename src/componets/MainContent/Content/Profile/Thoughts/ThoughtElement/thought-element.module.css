@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #1B1B1B;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 5px
+}
+
+.user_avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50px;
+}
+
+.user_name {
+    color: #fff
+}
+
+.date {
+    font-size: 11px;
+    color: #8d8d8d;
+}
+
+.thought_text {
+    font-size: 14px;
+    color: #fff;
+}

@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    padding: 0 35px;
+}
+
+.input_title {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.input {    
+    width: 312px;
+    height: 32px;
+    font-family: 'Montserrat';
+    background-color: #000000;
+    border: 1px solid #13B94C;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.password_input {
+    margin-bottom: 5px;
+}
+
+input::placeholder {
+    color: #13B94C;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.forgot_password {
+    float: right;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.sign_in_btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background-color: #13B94C;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+
+.sign_in_btn:active {
+    background-color: #11a745;
+}
