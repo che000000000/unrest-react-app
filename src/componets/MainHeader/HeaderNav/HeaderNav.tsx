@@ -3,7 +3,7 @@ import ListElement from './ListElement/ListElement'
 
 const HeaderNav = () => {
     const navList = [
-        { name: 'Уч. записи', link: '/auth' }
+        { name: 'Уч. записи', link: '/sign-in' }
     ]
     const listElements = navList.map((element: any) => (
         <ListElement link={element.link} name={element.name}/>

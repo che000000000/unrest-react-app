@@ -1,16 +1,16 @@
 const initialUserState = {
-    id: '',
-    isAutorized: false,
-    email: '',
-    userTag: '',
-    userName: '',
-    userAvatar: '',
-    aboutUser: '',
-    isWallOper: false
+    id: null,
+    isAutorized: null,
+    email: null,
+    userTag: null,
+    userName: null,
+    userAvatar: null,
+    aboutUser: null,
+    isWallOper: null 
 }
 
-const userReducer = (state: any = initialUserState, action: any) => {
+const authReducer = (state: any = initialUserState, action: any) => {
     
 }
 
-export default userReducer
+export default authReducer

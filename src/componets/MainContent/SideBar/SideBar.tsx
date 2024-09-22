@@ -4,10 +4,10 @@ import SideFooter from './SideFooter/SideFooter'
 
 const SideBar = () => {
     const mainRoutes = [
-        { name: 'Профиль', route: '/profile' },
-        { name: 'Диалоги', route: '/dialogs' },
-        { name: 'Подписки', route: '/subscribes' },
-        { name: 'Сообщества', route: '/communities' }
+        { name: 'Профиль', route: 'profile' },
+        { name: 'Диалоги', route: 'dialogs' },
+        { name: 'Подписки', route: 'subscribes' },
+        { name: 'Сообщества', route: 'communities' }
     ]
     const serviceRoutes = [
         {name: 'Настройки', route: '/settings'},

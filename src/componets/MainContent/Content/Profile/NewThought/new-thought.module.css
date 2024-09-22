@@ -8,6 +8,7 @@
 
 .title {
     font-size: 19px;
+    color: #fff;
 }
 
 .text_area {
@@ -15,8 +16,8 @@
     min-height: 30px;
     max-height: 154px;
     resize: vertical;
-    color: #ffffff;
-    background-color: #111111;
+    color: #13B94C;
+    background-color: #000000;
     border: 1px solid #13B94C;
     border-radius: 5px;
     overflow: hidden;
@@ -42,7 +43,6 @@
     align-items: center;
     height: 30px;
     border-radius: 5px;
-    font-weight: 500;
     padding: 0 25px;
     background-color: #13B94C;
 }
