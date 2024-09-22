@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 import { clearFormAC, setEmailInputTextAC, setPasswordInputTextAC, signInTK } from "../../../redux/reducers/singInReducer"
 import SignIn from "./SingIn"
+import AuthRedirect from "../../../Hocks/AuthRedirect"
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
@@ -18,4 +19,4 @@ const mapStateToProps = (state: any) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirect(SignIn))

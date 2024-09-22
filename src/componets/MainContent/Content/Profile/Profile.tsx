@@ -1,3 +1,4 @@
+import AuthRedirect from '../../../../Hocks/AuthRedirect'
 import Avatar from './Avatar/Avatar'
 import NewThought from './NewThought/NewThought'
 import profile from './profile.module.css'
@@ -31,4 +32,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default AuthRedirect(Profile)

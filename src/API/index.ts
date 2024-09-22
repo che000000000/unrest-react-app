@@ -1,21 +1,44 @@
 import axios from "axios"
 
+const baseURL = 'http://localhost:6425/'
+
 export const authAPI = {
+    verifyAuth: async () => {
+        try {
+            const response = await axios.get(`${baseURL}auth/verify`, { withCredentials: true })
+            return {
+                statusCode: response.status,
+                data: response.data
+            }
+        } catch (error: any) {
+            return {
+                statusCode: error.response.status,
+                message: error.response.data.message,
+                error: error.response.data.error
+            }
+        }
+    },
+
     signIn: async (email: string, password: string) => {
         const body = { email, password }
         try {
-            const response = await axios.post('http://localhost:6425/auth/sign-in', body)
-            return response.data
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                console.log(error.response?.data.message)
+            const response = await axios.post(`${baseURL}auth/sign-in`, body, { withCredentials: true })
+            return {
+                statusCode: response.status,
+                data: response.data
+            }
+        } catch (error: any) {
+            return {
+                statusCode: error.response.status,
+                message: error.response.data.message,
+                error: error.response.data.error
             }
         }
     }
 }
 
 export const usersAPI = {
-    setUserProfile: (user_id: string) => {
-        return axios.get('http://localhost:6425/users/profile').then(response => response.data)
+    setProfile: async (user_id: string) => {
+        return await axios.get(`${baseURL}users/profile`, { withCredentials: true }).then(response => response.data)
     }
 }

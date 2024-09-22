@@ -29,7 +29,7 @@ export const setProfileAC = (userProfile: any) => {return { type: 'SET-PROFILE',
 
 export const setProfileTK = (user_id: string) => {
     return (dispatch: any) => {
-        usersAPI.setUserProfile(user_id).then(data => {
+        usersAPI.setProfile(user_id).then(data => {
             dispatch(setProfileAC(data))
         })
     }
