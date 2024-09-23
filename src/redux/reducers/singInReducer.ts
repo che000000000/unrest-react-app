@@ -12,7 +12,7 @@ const initialUserState = {
         aboutMe: null,
         isWallOpen: null
     },
-    isAuth: false,
+    isAuth: null,
 }
 
 const signInReducer = (state: any = initialUserState, action: any) => {
@@ -45,6 +45,10 @@ const signInReducer = (state: any = initialUserState, action: any) => {
             },
             isAuth: true
         }
+        case 'FALL_SIGN_IN': return {
+            ...state,
+            isAuth: false
+        }
         case 'SIGN_OUT': return {
             ...state,
             user: {
@@ -70,24 +74,28 @@ export const setEmailInputTextAC = (emailInput: string) => { return { type: 'SET
 export const setPasswordInputTextAC = (passwordInput: string) => { return { type: 'SET_PASSWORD_INPUT_TEXT', passwordInput } }
 export const clearFormAC = () => { return { type: 'CLEAR_FORM' } }
 export const signInAC = (userData: any) => { return { type: 'SIGN_IN', userData } }
+const fallSignInAC = () => { return { type: 'FALL_SIGN_IN' } }
 export const signutAC = () => { return { type: 'SIGN_OUT' } }
 
 // Thunks
 
 export const signInTK = (email: string, password: string) => {
-    return (dispatch: any) => {
-        authAPI.signIn(email, password).then(data => {
-            if(data?.error) throw new Error(data.message)
-            else dispatch(signInAC(data.data))
-        })
+    return async (dispatch: any) => {
+        const data = await authAPI.signIn(email, password)
+        if ('error' in data) {
+            throw new Error(data.message)
+        }
+        dispatch(signInAC(data.data))
     }
 }
 
 export const verifyAuthTK = () => {
-    return (dispatch: any) => {
-        authAPI.verifyAuth().then(data => {
-            if(data?.error) throw new Error(data.message)
-            dispatch(signInAC(data.data))
-        })
+    return async (dispatch: any) => {
+        const data = await authAPI.verifyAuth()
+        if ('error' in data) {
+            dispatch(fallSignInAC())
+            throw new Error(data.message)
+        }
+        dispatch(signInAC(data.data))
     }
 }

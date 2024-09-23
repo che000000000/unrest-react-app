@@ -1,19 +1,24 @@
 import { usersAPI } from "../../API"
 
 let initialProfileState = {
-    userId: '',
-    userTag: '',
-    userName: '',
-    userAvatar: '',
-    aboutUser: '',
-    isWallOper: false
+    id: null,
+    userTag: null,
+    userName: null,
+    avatar: null,
+    aboutMe: null,
+    isWallOpen: false
 }
 
 const profileReducer = (state: any = initialProfileState, action: any) => {
     switch (action.type) {
         case 'SET-PROFILE':
             return {
-                ...action.userProfile
+                id: action.userProfile.id,
+                userTag: action.userProfile.userTag,
+                userName: action.userProfile.userName,
+                avatar: action.userProfile.avatar,
+                aboutMe: action.userProfile.aboutMe,
+                isWallOpen: action.userProfile.isWallOpen
             }
         default: return state
     }
@@ -28,9 +33,9 @@ export const setProfileAC = (userProfile: any) => {return { type: 'SET-PROFILE',
 // Thunk
 
 export const setProfileTK = (user_id: string) => {
-    return (dispatch: any) => {
-        usersAPI.setProfile(user_id).then(data => {
-            dispatch(setProfileAC(data))
-        })
+    return async (dispatch: any) => {
+        const data = await usersAPI.setProfile(user_id)
+        if ('error' in data) throw new Error(data.message)
+        dispatch(setProfileAC(data.data))
     }
 }

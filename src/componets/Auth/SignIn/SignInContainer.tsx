@@ -19,4 +19,4 @@ const mapStateToProps = (state: any) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirect(SignIn))
+export default AuthRedirect(connect(mapStateToProps, mapDispatchToProps)(SignIn))

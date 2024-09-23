@@ -9,21 +9,22 @@ const AuthRedirect = (WrappedComponent: React.ComponentType<any>) => {
         const { isAuth } = props
 
         useEffect(() => {
-            if (isAuth && location.pathname === '/sign-in') {
+            debugger
+            if (isAuth === null) return
+            if ((isAuth && location.pathname === '/sign-in') || (isAuth && location.pathname === '/')) {
                 navigate('/main-content/profile')
             } else if (!isAuth && location.pathname !== '/sign-in') {
                 navigate('/sign-in')
             }
         }, [isAuth, location.pathname, navigate])
-        return <WrappedComponent {...props} />
+        return <WrappedComponent {...props}/>
     }
 
     const mapStateToProps = (state: any) => ({
         isAuth: state.signInReducer.isAuth,
-        isAuthVerified: state.signInReducer.isAuthVerified,
     })
 
     return connect(mapStateToProps)(AuthRedirectComponent)
-};
+}
 
 export default AuthRedirect

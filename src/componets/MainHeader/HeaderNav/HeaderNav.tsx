@@ -6,7 +6,7 @@ const HeaderNav = (props: any) => {
         { name: props.userName, link: '/sign-in' }
     ]
     const listElements = navList.map((element: any, index: number) => (
-        <ListElement key={index} link={element.link} name={element.name}/>
+        <ListElement key={index} link={element.link} name={element.name} />
     ))
     return (
         <nav className={headerNav.container}>
