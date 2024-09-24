@@ -9,7 +9,6 @@ const AuthRedirect = (WrappedComponent: React.ComponentType<any>) => {
         const { isAuth } = props
 
         useEffect(() => {
-            debugger
             if (isAuth === null) return
             if ((isAuth && location.pathname === '/sign-in') || (isAuth && location.pathname === '/')) {
                 navigate('/main-content/profile')

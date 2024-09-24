@@ -17,7 +17,6 @@ const App = (props: any) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        debugger
         await props.store.dispatch(verifyAuthTK())
       } finally {
         setLoading(false)
@@ -27,13 +26,7 @@ const App = (props: any) => {
     checkAuth()
   }, [props.store])
 
-  if (loading) {
-    return (
-      <div className={app.container}>
-        <div className={app.loading}>Подключение...</div>
-      </div>
-    )
-  }
+  if (loading) return null
 
   return (
     <div className={app.container}>

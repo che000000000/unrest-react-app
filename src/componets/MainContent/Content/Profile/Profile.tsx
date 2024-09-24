@@ -1,10 +1,10 @@
-import Avatar from './Avatar/Avatar'
-import NewThought from './NewThought/NewThought'
+import Avatar from './common/Avatar/Avatar'
+import NewThought from './common/NewThought/NewThought'
 import profile from './profile.module.css'
-import Subscribe from './Subscribe/Subscrive'
-import Subscribes from './Subscribes/Subscribes'
-import Thoughts from './Thoughts/Thoughts'
-import UserInfo from './UserInfo/UserInfo'
+import Subscribe from './common/Subscribe/Subscrive'
+import Subscribes from './common/Subscribes/Subscribes'
+import Thoughts from './common/Thoughts/Thoughts'
+import UserInfo from './common/UserInfo/UserInfo'
 
 const Profile = (props: any) => {
     return (

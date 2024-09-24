@@ -13,6 +13,7 @@ const initialUserState = {
         isWallOpen: null
     },
     isAuth: null,
+    authErrorText: null
 }
 
 const signInReducer = (state: any = initialUserState, action: any) => {
@@ -45,7 +46,7 @@ const signInReducer = (state: any = initialUserState, action: any) => {
             },
             isAuth: true
         }
-        case 'FALL_SIGN_IN': return {
+        case 'FALL_AUTH': return {
             ...state,
             isAuth: false
         }
@@ -62,6 +63,10 @@ const signInReducer = (state: any = initialUserState, action: any) => {
             },
             isAuth: false,
         }
+        case 'SET_AUTH_ERROR_TEXT': return {
+            ...state,
+            authErrorText: action.errorText
+        }
         default: return state
     }
 }
@@ -74,8 +79,9 @@ export const setEmailInputTextAC = (emailInput: string) => { return { type: 'SET
 export const setPasswordInputTextAC = (passwordInput: string) => { return { type: 'SET_PASSWORD_INPUT_TEXT', passwordInput } }
 export const clearFormAC = () => { return { type: 'CLEAR_FORM' } }
 export const signInAC = (userData: any) => { return { type: 'SIGN_IN', userData } }
-const fallSignInAC = () => { return { type: 'FALL_SIGN_IN' } }
+export const fallAuth = () => { return { type: 'FALL_AUTH' } }
 export const signutAC = () => { return { type: 'SIGN_OUT' } }
+export const setAuthErrorText = (errorText: string) => { return { type: 'SET_AUTH_ERROR_TEXT', errorText} } 
 
 // Thunks
 
@@ -83,9 +89,8 @@ export const signInTK = (email: string, password: string) => {
     return async (dispatch: any) => {
         const data = await authAPI.signIn(email, password)
         if ('error' in data) {
-            throw new Error(data.message)
-        }
-        dispatch(signInAC(data.data))
+            dispatch(setAuthErrorText(data.message))
+        } else dispatch(signInAC(data.data))
     }
 }
 
@@ -93,9 +98,8 @@ export const verifyAuthTK = () => {
     return async (dispatch: any) => {
         const data = await authAPI.verifyAuth()
         if ('error' in data) {
-            dispatch(fallSignInAC())
-            throw new Error(data.message)
-        }
-        dispatch(signInAC(data.data))
+            dispatch(fallAuth())
+            dispatch(setAuthErrorText(data.message))
+        } else dispatch(signInAC(data.data))
     }
 }

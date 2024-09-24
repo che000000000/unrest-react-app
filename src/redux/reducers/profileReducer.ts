@@ -1,4 +1,5 @@
 import { usersAPI } from "../../API"
+import { fallAuth, setAuthErrorText } from "./singInReducer"
 
 let initialProfileState = {
     id: null,
@@ -35,7 +36,11 @@ export const setProfileAC = (userProfile: any) => {return { type: 'SET-PROFILE',
 export const setProfileTK = (user_id: string) => {
     return async (dispatch: any) => {
         const data = await usersAPI.setProfile(user_id)
-        if ('error' in data) throw new Error(data.message)
-        dispatch(setProfileAC(data.data))
+        if ('error' in data) {
+            if ('error' in data && data.error === 'Unauthorized'){
+                dispatch(fallAuth())
+                dispatch(setAuthErrorText(data.message))
+            } 
+        } else dispatch(setProfileAC(data.data))
     }
 }

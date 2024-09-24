@@ -1,49 +1,32 @@
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { setProfileTK } from "../../../../redux/reducers/profileReducer";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-// Interfaces
-
-export interface Params {
-    user_id: string
-}
-
-export interface MapStateProps {
-    my_id: string
-    user_id: string
-    userTag: string
-    userName: string
-    avatar: string
-    aboutMe: string
-    isWallOpen: boolean
-}
-
-export interface MapDispatchProps {
-    setProfile: (user_id: string) => void
-}
-
-type Props = MapStateProps & MapDispatchProps & { params: Params };
-
-// Components
+import ProfileLoading from "./ProfileLoading/ProfileLoading";
+import AuthRedirect from "../../../../Hocks/AuthRedirect";
 
 const UseParamsComponent = (props: any) => {
     const params = useParams()
     return <ProfileContainer params={params} {...props} />
 }
 
-class ProfileContainer extends React.Component<Props> {
-    
-    componentDidMount(): void {
-        let userId = this.props.params.user_id
-        if(!userId) userId = this.props.my_id
-        if(userId) this.props.setProfile(userId)
-    }
+const ProfileContainer = (props: any) => {
+    const [loading, setLoading] = useState(true);
+    const { params, my_id, setProfile } = props
 
-    render(): React.ReactNode {
-        return <Profile {...this.props} />
-    }
+    useEffect(() => {
+        let userId = params.user_id;
+        if (!userId) userId = my_id;
+        if (userId) {
+            setProfile(userId).then(() => {
+                setLoading(false)
+            })
+        }
+    }, [params.user_id, my_id, setProfile])
+
+    if (loading) return <ProfileLoading />
+    return <Profile {...props} />   
 }
 
 const mapStateToProps = (state: any) => {
@@ -60,8 +43,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        setProfile: (user_id: string) => { dispatch(setProfileTK(user_id)) }
+        setProfile: (user_id: string) => dispatch(setProfileTK(user_id))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UseParamsComponent)
+export default AuthRedirect(connect(mapStateToProps, mapDispatchToProps)(UseParamsComponent))
