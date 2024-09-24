@@ -1,12 +1,12 @@
 import headerNav from './header-nav.module.css'
 import ListElement from './ListElement/ListElement'
 
-const HeaderNav = () => {
+const HeaderNav = (props: any) => {
     const navList = [
-        { name: 'Уч. записи', link: '/sign-in' }
+        { name: props.userName, link: '/sign-in' }
     ]
-    const listElements = navList.map((element: any) => (
-        <ListElement link={element.link} name={element.name}/>
+    const listElements = navList.map((element: any, index: number) => (
+        <ListElement key={index} link={element.link} name={element.name} />
     ))
     return (
         <nav className={headerNav.container}>

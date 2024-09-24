@@ -1,7 +1,6 @@
 import mainContent from './main-content.module.css'
-import { Outlet, Route, Routes } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import SideBar from "./SideBar/SideBar"
-import Profile from "./Content/Profile/Profile"
 
 const MainContent = () => {
   return (

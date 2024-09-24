@@ -1,5 +1,5 @@
 import thoughtElement from './thought-element.module.css'
-import noImage from '../../../../../../img/no-avatar.png'
+import noImage from '../../../../../../../img/no-avatar.png'
 import { NavLink } from 'react-router-dom'
 
 const ThoughtElement = () => {

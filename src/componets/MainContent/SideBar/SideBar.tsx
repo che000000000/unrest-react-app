@@ -14,11 +14,11 @@ const SideBar = () => {
         {name: 'Поддержка', route: '/support'},
         {name: 'Сообщить о проблеме', route: '/report'}
     ]
-    const mainRoutesElements = mainRoutes.map((route: any) => (
-        <SideBarRoute name={route.name} route={route.route} />
+    const mainRoutesElements = mainRoutes.map((route: any, index: number) => (
+        <SideBarRoute key={index} name={route.name} route={route.route} />
     ))
-    const serviceRoutesElements = serviceRoutes.map((route: any) => (
-        <SideBarRoute name={route.name} route={route.route} />
+    const serviceRoutesElements = serviceRoutes.map((route: any, index: number) => (
+        <SideBarRoute key={index} name={route.name} route={route.route} />
     ))
     return (
         <aside className={sideBar.container}>
