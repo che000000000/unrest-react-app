@@ -82,7 +82,7 @@ export const subscribesAPI = {
 
     getSubscribes: async (user_id: string): Promise<ApiResponse> => {
         try {
-            const response = await axios.get(`${baseURL}subscribes/page?user-id=${user_id}`, { withCredentials: true })
+            const response = await axios.get(`${baseURL}subscribes/page?user-id=${user_id}&page=1&size=5`, { withCredentials: true })
             return responses.coolResponse(response)
         } catch (error: any) {
             return responses.errorResponse(error)

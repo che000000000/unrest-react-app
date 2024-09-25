@@ -9,7 +9,9 @@ let initialProfileState = {
     aboutMe: null,
     isWallOpen: false,
     isSubscribe: null,
-    subscribeId: null
+    subscribeId: null,
+    userSubscribes: [],
+    totalUserSubscribes: null
 }
 
 const profileReducer = (state: any = initialProfileState, action: any) => {
@@ -42,6 +44,12 @@ const profileReducer = (state: any = initialProfileState, action: any) => {
                 isSubscribe: false,
                 subscribeId: null
             }
+        case 'SET_USER_SUBSCRIBES':
+            return {
+                ...state,
+                userSubscribes: action.subscribesPage,
+                totalUserSubscribes: action.totalUserSubscribes
+            }
         default: return state
     }
 }
@@ -54,16 +62,18 @@ export const setProfileAC = (userProfile: any) => { return { type: 'SET-PROFILE'
 export const setSubscribeStatusAC = (subscribe: any) => { return { type: 'SET_SUBSCRIBE', subscribe } }
 export const subscribeAC = (subscribeId: string) => { return { type: 'SUBSCRIBE', subscribeId } } 
 export const unsubscribeAC = () => { return { type: 'UNSUBSCRIBE' } }
+export const setUserSubscribesAC = (subscribesPage: any, totalUserSubscribes: number) => { return { type: 'SET_USER_SUBSCRIBES', subscribesPage, totalUserSubscribes } }
 
 // Thunk
 
 export const setProfileTK = (user_id: string) => {
     return async (dispatch: any) => {
-        const [getProfileRes, getSubscribeRes] = await Promise.all([
+        const [getProfileRes, getSubscribeRes, getUserSubsRes] = await Promise.all([
             usersAPI.setProfile(user_id),
-            subscribesAPI.getSubscribeStatus(user_id)
+            subscribesAPI.getSubscribeStatus(user_id),
+            subscribesAPI.getSubscribes(user_id)
         ])
-        if ('error' in getProfileRes || 'error' in getSubscribeRes) {
+        if ('error' in getProfileRes || 'error' in getSubscribeRes || 'error' in getUserSubsRes) {
             if ('error' in getProfileRes && getProfileRes.error === 'Unauthorized') {
                 dispatch(fallAuth())
                 dispatch(setAuthErrorText(getProfileRes.message))
@@ -71,6 +81,7 @@ export const setProfileTK = (user_id: string) => {
         } else {
             dispatch(setProfileAC(getProfileRes.data))
             dispatch(setSubscribeStatusAC(getSubscribeRes.data))
+            dispatch(setUserSubscribesAC(getUserSubsRes.data.subscribesPage, getUserSubsRes.data.totalSubscribesCount))
         }
     }
 }

@@ -2,18 +2,18 @@ import { NavLink } from 'react-router-dom'
 import subscribes from './subscribes.module.css'
 import UserElement from './UserElement/UserElement'
 
-const Subscribes = () => {
+const Subscribes = (props: any) => {
+    const subUsersElements = props.userSubscribes.map((user: any, index: number) => (
+        <UserElement key={index} userId={user.id} userName={user.userName} userAvatar={user.avatar} />
+    )) 
+
     return (
         <div className={subscribes.container}>
-            <NavLink to='main-content/subscribes'>
-                <h1 className={subscribes.title}>Подписки<span className={subscribes.subscribes_count}>11</span></h1>
+            <NavLink to={`/main-content/subscribes/${props.userId}`}>
+                <h1 className={subscribes.title}>Подписки<span className={subscribes.subscribes_count}>{props.totalUserSubscribes}</span></h1>
             </NavLink>
             <ul className={subscribes.users_list}>
-                <UserElement />
-                <UserElement />
-                <UserElement />
-                <UserElement />
-                <UserElement />
+                {subUsersElements}
             </ul>
         </div>
     )
