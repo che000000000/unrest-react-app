@@ -3,14 +3,14 @@
     gap: 15px;
 }
 
-.leftside {
+.left_side {
     display: flex;
     flex-direction: column;
     width: 220px;
     gap: 15px;
 }
 
-.rightside {
+.right_side {
     display: flex;
     flex-direction: column;
     width: 507px;

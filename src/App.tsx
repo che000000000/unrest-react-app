@@ -13,6 +13,7 @@ const App = (props: any) => {
   const location = useLocation()
   const isAuthRoute = location.pathname === '/sign-in' || location.pathname === '/sign-up' || location.pathname === '/'
   const [loading, setLoading] = useState(true)
+  const state = props.store.getState()
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -33,7 +34,7 @@ const App = (props: any) => {
       {isAuthRoute ? <AuthHeader /> : <MainHeaderContainer />}
       <div className={app.core}>
         <Routes>
-          <Route path={'/'} element={<SignInContainer />} />
+          <Route path={'/'} element={!state.signInReducer.isAuth ? <SignInContainer /> : <ProfileContainer />} />
           <Route path={'main-content/*'} element={<MainContent />}>
             <Route path={'profile/:user_id?'} element={<ProfileContainer />} />
           </Route>
