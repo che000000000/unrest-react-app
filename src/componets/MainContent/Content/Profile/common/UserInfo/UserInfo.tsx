@@ -7,9 +7,7 @@ const UserInfo = (props: any) => {
                 <div className={userInfo.user_name}>{props.userName}</div>
                 <div className={userInfo.user_tag}>{props.userTag}</div>
             </div>
-            <div>
-                <div className={userInfo.about_user}>{props.aboutMe}</div>
-            </div>
+                {props.aboutMe !== null ? <div className={userInfo.about_user}>{props.aboutMe}</div> : null} 
             <div className={userInfo.more_info}>
                 Дополнительная информация
             </div>

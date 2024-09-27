@@ -12,14 +12,14 @@ const UseParamsComponent = (props: any) => {
 }
 
 const ProfileContainer = (props: any) => {
-    const [loading, setLoading] = useState(true);
     const { params, myId, setProfile } = props
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true)
         let userId = params.user_id;
         if (!userId) userId = myId;
         if (userId) {
-            
             setProfile(userId).then(() => {
                 setLoading(false)
             })

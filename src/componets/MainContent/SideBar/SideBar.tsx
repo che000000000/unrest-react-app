@@ -10,9 +10,9 @@ const SideBar = () => {
         { name: 'Сообщества', route: 'communities' }
     ]
     const serviceRoutes = [
-        {name: 'Настройки', route: '/settings'},
-        {name: 'Поддержка', route: '/support'},
-        {name: 'Сообщить о проблеме', route: '/report'}
+        {name: 'Настройки', route: 'settings'},
+        {name: 'Поддержка', route: 'support'},
+        {name: 'Сообщить о проблеме', route: 'report'}
     ]
     const mainRoutesElements = mainRoutes.map((route: any, index: number) => (
         <SideBarRoute key={index} name={route.name} route={route.route} />
