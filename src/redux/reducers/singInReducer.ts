@@ -80,7 +80,7 @@ export const setPasswordInputTextAC = (passwordInput: string) => { return { type
 export const clearFormAC = () => { return { type: 'CLEAR_FORM' } }
 export const signInAC = (userData: any) => { return { type: 'SIGN_IN', userData } }
 export const fallAuth = () => { return { type: 'FALL_AUTH' } }
-export const signutAC = () => { return { type: 'SIGN_OUT' } }
+export const signOutAC = () => { return { type: 'SIGN_OUT' } }
 export const setAuthErrorText = (errorText: string) => { return { type: 'SET_AUTH_ERROR_TEXT', errorText} } 
 
 // Thunks

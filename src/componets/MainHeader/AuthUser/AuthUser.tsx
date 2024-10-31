@@ -9,7 +9,6 @@ const AuthUser = (props: any) => {
     return (
         <button className={authUser.container} onClick={() => toggleMenuOpenStatus(!menuIsOpen)}>
             <img className={authUser.avatar} alt='user avatar' src={props.avatar ? props.avatar : noImage} />
-            <div className={authUser.user_name}>{props.userName}</div>
             <AuthMenu openedStatus={menuIsOpen} />
         </button>
     )

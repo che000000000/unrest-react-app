@@ -4,7 +4,7 @@ import UserElement from './UserElement/UserElement'
 
 const Subscribes = (props: any) => {
     const subUsersElements = props.userSubscribes.map((user: any, index: number) => (
-        <UserElement key={index} userId={user.id} userName={user.userName} userAvatar={user.avatar} />
+        <UserElement key={index} myId={props.myId} userId={user.id} userName={user.userName} userAvatar={user.avatar} />
     )) 
 
     return (

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { setProfileTK } from "../../../../redux/reducers/profileReducer";
+import { loadFirstThoughtsPageTK, setProfileTK } from "../../../../redux/reducers/profileReducer";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProfileLoading from "./ProfileLoading/ProfileLoading";
@@ -12,19 +12,21 @@ const UseParamsComponent = (props: any) => {
 }
 
 const ProfileContainer = (props: any) => {
-    const { params, myId, setProfile } = props
-    const [loading, setLoading] = useState(false);
+    const { params, myId, setProfile, loadFirstThoughtsPage} = props
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         setLoading(true)
-        let userId = params.user_id;
-        if (!userId) userId = myId;
-        if (userId) {
-            setProfile(userId).then(() => {
-                setLoading(false)
-            })
+        let userId = params.user_id || myId
+        const fetchProfileData = async () => {
+            await Promise.all([
+                setProfile(userId),
+                loadFirstThoughtsPage(userId, 3)
+            ])
+            setLoading(false)
         }
-    }, [params.user_id, myId, setProfile])
+        fetchProfileData()
+    }, [params])
 
     if (loading) return <ProfileLoading />
     return <Profile {...props} />
@@ -39,13 +41,14 @@ const mapStateToProps = (state: any) => {
         avatar: state.profileReducer.avatar,
         aboutMe: state.profileReducer.aboutMe,
         isWallOpen: state.profileReducer.isWallOpen,
-        isSubscribe: state.profileReducer.isSubscribe
+        isSubscribe: state.profileReducer.isSubscribe,
     }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        setProfile: (user_id: string) => dispatch(setProfileTK(user_id))
+        setProfile: (user_id: string) => dispatch(setProfileTK(user_id)),
+        loadFirstThoughtsPage: (user_id: string, page_size: number) => { dispatch(loadFirstThoughtsPageTK(user_id, page_size)) },
     }
 }
 

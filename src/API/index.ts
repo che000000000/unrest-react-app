@@ -89,3 +89,14 @@ export const subscribesAPI = {
         }
     }
 }
+
+export const thoughtsAPI = {
+    getThoughtsPage: async (user_id: string, page_number: number, page_size: number): Promise<ApiResponse> => {
+        try {
+            const response = await axios.get(`${baseURL}thoughts/page?user-id=${user_id}&page=${page_number}&size=${page_size}`, { withCredentials: true })
+            return responses.coolResponse(response)
+        } catch (error: any) {
+            return responses.errorResponse(error)
+        }
+    }
+}

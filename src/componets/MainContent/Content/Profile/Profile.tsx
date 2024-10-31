@@ -2,11 +2,11 @@ import Avatar from './common/Avatar/Avatar'
 import NewThought from './common/NewThought/NewThought'
 import profile from './profile.module.css'
 import Refactor from './common/underAvatarBtn/Refactor/Refactor'
-import Thoughts from './common/Thoughts/Thoughts'
 import UserInfo from './common/UserInfo/UserInfo'
 import SubscribeContainer from './common/underAvatarBtn/Subscribe/SubscribeContainer'
 import UnsubscribeContainer from './common/underAvatarBtn/Unsubscribe/UnsubscribeContainer'
 import SubscribesContainer from './common/Subscribes/SubscribesContainer'
+import ThoughtsContainer from './common/Thoughts/ThoughtsContainer'
 
 const Profile = (props: any) => {
     return (
@@ -26,7 +26,7 @@ const Profile = (props: any) => {
                 </div>
                 <div className={`${profile.block} ${profile.block4}`}>
                     <NewThought />
-                    <Thoughts />
+                    <ThoughtsContainer />
                 </div>
             </div>
         </div>

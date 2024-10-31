@@ -3,7 +3,6 @@ import MainHeader from "./MainHeader";
 
 const mapStateToProps = (state: any) => {
     return {
-        userName: state.signInReducer.user.userName,
         avatar: state.signInReducer.user.avatar
     }
 }
