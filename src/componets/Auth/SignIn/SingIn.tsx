@@ -7,7 +7,7 @@ const SignIn = (props: any) => {
         <div className={signIn.container}>
             <div className={signIn.window}>
                 <div className={signIn.about}>
-                    Для пользования это соц. сетью нужно иметь аккаунт. Если у тебя нет аккаунта, его можно создать <Link
+                    Для пользования этой соц. сетью нужно иметь аккаунт. Если у тебя нет аккаунта, его можно создать <Link
                         to={'/sign-up'}
                         className={signIn.about_link}
                         onClick={() => props.clearForm()}>здесь

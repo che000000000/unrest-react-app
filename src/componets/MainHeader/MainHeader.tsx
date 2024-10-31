@@ -1,12 +1,12 @@
 import mainHeader from './main-header.module.css'
-import HeaderLogo from './HeaderLogo/HeaderLogo'
 import AuthUser from './AuthUser/AuthUser'
+import HeaderLogoContainer from './HeaderLogo/HeaderLogoContainer'
 
 const MainHeader = (props: any) => {
     return (
         <header className={mainHeader.container}>
             <div className={mainHeader.content}>
-                <HeaderLogo />
+                <HeaderLogoContainer />
                 <AuthUser userName={props.userName} avatar={props.avatar} />
             </div>
         </header>

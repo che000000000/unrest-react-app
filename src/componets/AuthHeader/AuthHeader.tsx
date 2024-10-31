@@ -1,5 +1,5 @@
 import authHeader from './auth-header.module.css'
-import HeaderLogo from './HeaderLogo/HeaderLogo'
+import HeaderLogo from '../MainHeader/HeaderLogo/HeaderLogo'
 
 const AuthHeader = () => {
     return (

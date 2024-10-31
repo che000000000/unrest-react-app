@@ -1,14 +1,16 @@
 .container {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
+    height: 100%;
     color: #13B94C;
     font-weight: 500;
     background-color: #111111;
 }
 
 .avatar {
-    object-fit: cover   ;
+    object-fit: cover;
     width: 36px;
     height: 36px;
     border-radius: 50px;

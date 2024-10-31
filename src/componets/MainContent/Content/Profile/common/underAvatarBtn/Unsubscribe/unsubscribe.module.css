@@ -1,0 +1,15 @@
+.container {
+    height: 30px;
+    width: 100%;
+    font-size: 16px;
+    color: #13B94C;
+    background-color: #0a0a0a;
+    border: 1px solid #13B94C;
+    border-radius: 5px;
+}
+
+.container:active {
+    color: #11a745;
+    background-color: #000000;
+    border: 1px solid #11a745;
+}
