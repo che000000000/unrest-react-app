@@ -10,7 +10,7 @@
 .header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
 }
 
 .user {
@@ -30,9 +30,19 @@
     color: #fff
 }
 
+.header_right_side {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8d8d8d;
+}
+
+.refactored {
+    font-size: 11px;
+}
+
 .date {
     font-size: 11px;
-    color: #8d8d8d;
 }
 
 .thought_text {
